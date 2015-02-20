@@ -155,6 +155,11 @@
  */
 @property (nonatomic, strong) NSURLCredential *credential;
 
+/**
+ The result of extractItentity:andTrust
+ */
+@property (nonatomic, assign) OSStatus securityError;
+
 ///-------------------------------
 /// @name Managing Security Policy
 ///-------------------------------
@@ -287,6 +292,10 @@
  */
 - (void)setWillSendRequestForAuthenticationChallengeBlock:(void (^)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge))block;
 
+/**
+ Gets the authentication certificate identity and trust
+ */
+-(OSStatus)extractIdentity:(SecIdentityRef *)identity andTrust:(SecTrustRef *)trust;
 /**
  Sets a block to be executed when the server redirects the request from one URL to another URL, or when the request URL changed by the `NSURLProtocol` subclass handling the request in order to standardize its format, as handled by the `NSURLConnectionDataDelegate` method `connection:willSendRequest:redirectResponse:`.
 
