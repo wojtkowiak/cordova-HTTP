@@ -88,6 +88,13 @@ public abstract class CordovaHttp {
         }
         return request;
     }
+
+    protected HttpRequest setupTimeouts(HttpRequest request) {
+        // Change request timeout from default forever seconds to 5 minutes
+        request.connectTimeout(30000);
+        request.readTimeout(30000);
+        return request;
+    }
     
     protected void respondWithError(int status, String msg) {
         try {
